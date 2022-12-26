@@ -23,7 +23,7 @@ jobs:
           context: ./
           file: ./Containerfile
           push: false
-          
+
       - name: Buildah Action
         uses: redhat-actions/buildah-build@v2
         with:

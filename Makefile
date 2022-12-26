@@ -20,4 +20,3 @@ lint:
 	isort src --profile=black
 	mypy src
 	pylint src
-

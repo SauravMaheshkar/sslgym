@@ -4,4 +4,4 @@ numpy==1.24.1
 pre-commit==2.21.0
 pylint==2.15.9
 pytest==7.2.0
-scipy==1.9.3
+scipy==1.10.0

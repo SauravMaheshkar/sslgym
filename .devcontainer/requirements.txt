@@ -7,7 +7,7 @@ pytest>=6.0.0
 pytest-github-actions-annotate-failures>=0.1.8
 ruff
 scipy>=1.10.0
-tensorflow==2.11.0
+tensorflow==2.11.1
 torch>=2.0.0
 torchvision
 types-Pillow>=9.3.0.4

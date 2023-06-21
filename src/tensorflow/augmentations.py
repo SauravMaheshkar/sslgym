@@ -84,6 +84,34 @@ def color_jitter(image: tf.Tensor, s: float = 0.5) -> tf.Tensor:
 
 
 @tf.function
+def random_resize_crop(
+    image: tf.Tensor, min_scale: float, max_scale: float, crop_size: int
+) -> tf.Tensor:
+    """Randomly resize and crop the input image"""
+    if crop_size == 224:
+        image_shape = 260
+        image = tf.image.resize(image, (image_shape, image_shape))
+    else:
+        image_shape = 160
+        image = tf.image.resize(image, (image_shape, image_shape))
+
+    # Get the crop size for given min and max scale
+    size = tf.random.uniform(
+        shape=(1,),
+        minval=min_scale * image_shape,
+        maxval=max_scale * image_shape,
+        dtype=tf.float32,
+    )
+    size = tf.cast(size, tf.int32)[0]
+
+    # Get the crop from the image
+    crop = tf.image.random_crop(image, (size, size, 3))
+    crop_resize = tf.image.resize(crop, (crop_size, crop_size))
+
+    return crop_resize
+
+
+@tf.function
 def random_apply(func: Callable, x: tf.Tensor, prob: float) -> tf.Tensor:
     """Randomly apply the desired func to the input image"""
     return tf.cond(

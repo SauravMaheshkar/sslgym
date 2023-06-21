@@ -37,7 +37,7 @@ class VICReg(tf.keras.Model):
         self.varloss_tracker = tf.keras.metrics.Mean(name="variance_loss")
         self.covloss_tracker = tf.keras.metrics.Mean(name="covariance_loss")
 
-    def get_config(self):
+    def get_config(self) -> dict:
         return {
             "invar_coeff": self.invar_coeff,
             "var_coeff": self.var_coeff,
@@ -46,11 +46,11 @@ class VICReg(tf.keras.Model):
         }
 
     @classmethod
-    def from_config(cls, config, custom_objects=None):
+    def from_config(cls, config, custom_objects=None) -> "VICReg":
         return cls(**config)
 
     @property
-    def metrics(self):
+    def metrics(self) -> list:
         return [
             self.loss_tracker,
             self.invarloss_tracker,
@@ -58,7 +58,7 @@ class VICReg(tf.keras.Model):
             self.covloss_tracker,
         ]
 
-    def build_encoder(self):
+    def build_encoder(self) -> tf.keras.Model:
         """Build the encoder"""
         encoder_input = tf.keras.layers.Input((None, None, 3))
         base_model = tf.keras.applications.ResNet50(
@@ -72,7 +72,7 @@ class VICReg(tf.keras.Model):
         )
         return encoder
 
-    def build_expander(self, num_units: int):
+    def build_expander(self, num_units: int) -> tf.keras.Model:
         """Build the expander"""
         expander_input = tf.keras.layers.Input((2048,))
 
@@ -114,7 +114,7 @@ class VICReg(tf.keras.Model):
 
         return z, z_prime
 
-    def train_step(self, data):
+    def train_step(self, data) -> dict:
         x, x_prime = data[0][0], data[1][0]
         inputs = [x, x_prime]
         batch_size = inputs[0][0].shape[0]

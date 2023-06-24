@@ -11,6 +11,8 @@ clean:
 	rm -rf .mypy_cache/
 	rm -rf .pytest_cache/
 	rm -rf .ruff_cache/
+	pre-commit gc
+	pre-commit clean
 
 ## Testing
 test:

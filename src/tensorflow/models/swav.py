@@ -19,7 +19,7 @@ class SwAV(tf.keras.Model):
     def __init__(
         self,
         units: Tuple[int, int] = (1024, 96),
-        projection_dim=10,
+        projection_dim: int = 10,
         num_sinkhorn_iters: int = 3,
         CROPS_FOR_ASSIGN: Tuple[int, int] = (0, 1),
         NUM_CROPS: Tuple[int, int] = (2, 3),

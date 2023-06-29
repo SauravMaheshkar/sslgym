@@ -29,11 +29,13 @@ class ResNet(nn.Module):
         hidden_mlp=0,
         nmb_prototypes=0,
         eval_mode=False,
+        device="cpu",
     ):
         super(ResNet, self).__init__()
         if norm_layer is None:
             norm_layer = nn.BatchNorm2d
         self._norm_layer = norm_layer
+        self.device = device
 
         self.eval_mode = eval_mode
         self.padding = nn.ConstantPad2d(1, 0.0)
@@ -216,7 +218,7 @@ class ResNet(nn.Module):
         start_idx = 0
         for end_idx in idx_crops:
             _out = self.forward_backbone(
-                torch.cat(inputs[start_idx:end_idx]).cuda(non_blocking=True)
+                torch.cat(inputs[start_idx:end_idx]).to(device=self.device)
             )
             if start_idx == 0:
                 output = _out

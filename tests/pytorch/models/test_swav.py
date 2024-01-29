@@ -1,4 +1,5 @@
 """Test SwAV model."""
+
 import pytest
 import torch
 

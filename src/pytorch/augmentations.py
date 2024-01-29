@@ -1,4 +1,5 @@
 """Common Augmentations"""
+
 import random
 
 from PIL import ImageFilter, ImageOps

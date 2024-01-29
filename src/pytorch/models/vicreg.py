@@ -5,6 +5,7 @@ Based on Variance-Invariance-Covariance Regularization For Self-Supervised Learn
 
 Authors: Adrien Bardes, Jean Ponce and Yann LeCun
 """
+
 import typing
 from typing import List, Optional, Tuple
 

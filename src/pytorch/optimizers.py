@@ -1,4 +1,5 @@
 """Popular Optimizer implementations."""
+
 from typing import Callable, Optional
 
 import torch

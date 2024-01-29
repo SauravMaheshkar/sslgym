@@ -1,4 +1,5 @@
 """Test VICReg model."""
+
 import pytest
 
 import tensorflow as tf

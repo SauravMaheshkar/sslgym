@@ -1,4 +1,5 @@
 """Test custom pytorch augmentations."""
+
 import pytest
 from PIL import Image
 

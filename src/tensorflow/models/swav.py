@@ -6,6 +6,7 @@ Based on Unsupervised Learning of Visual Features by Contrasting Cluster Assignm
 Authors: Mathilde Caron, Ishan Misra, Julien Mairal, Priya Goyal,
 Piotr Bojanowski and Armand Joulin
 """
+
 from itertools import groupby
 from typing import Tuple
 

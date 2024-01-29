@@ -1,4 +1,5 @@
 """Common Augmentations"""
+
 import random
 from typing import Any, Callable, Tuple
 
